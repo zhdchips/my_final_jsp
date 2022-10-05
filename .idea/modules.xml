@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/filter_/filter_.iml" filepath="$PROJECT_DIR$/filter_/filter_.iml" />
+      <module fileurl="file://$PROJECT_DIR$/jstl_/jstl_.iml" filepath="$PROJECT_DIR$/jstl_/jstl_.iml" />
+      <module fileurl="file://$PROJECT_DIR$/listener_/listener_.iml" filepath="$PROJECT_DIR$/listener_/listener_.iml" />
+      <module fileurl="file://$PROJECT_DIR$/oa_with_el_and_jstl/oa_with_el_and_jstl.iml" filepath="$PROJECT_DIR$/oa_with_el_and_jstl/oa_with_el_and_jstl.iml" />
+    </modules>
+  </component>
+</project>
