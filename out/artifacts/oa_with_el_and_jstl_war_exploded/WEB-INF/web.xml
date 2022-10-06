@@ -7,6 +7,10 @@
         <welcome-file>welcome</welcome-file>
     </welcome-file-list>
 
+    <session-config>
+        <session-timeout>1</session-timeout>
+    </session-config>
+
     <filter>
         <filter-name>fiter1</filter-name>
         <filter-class>com.bjpowernode.oa.web.action.LoginCheckFilter</filter-class>
