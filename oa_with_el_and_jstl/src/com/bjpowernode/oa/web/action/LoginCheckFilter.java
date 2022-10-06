@@ -16,9 +16,9 @@ public class LoginCheckFilter implements Filter {
         HttpServletRequest request = (HttpServletRequest) servletRequest;
         HttpServletResponse response = (HttpServletResponse) servletResponse;
         HttpSession session = request.getSession();
-
         String servletPath = request.getServletPath();
 
+        // 除了特定的几个页面外，访问其他页面需要验证当前会话是否已经登录
         if ("/toLogin.jsp".equals(servletPath) ||
                 "/index.jsp".equals(servletPath) ||
                 "/user/login".equals(servletPath) ||
@@ -28,6 +28,7 @@ public class LoginCheckFilter implements Filter {
                 session != null && session.getAttribute("user") != null) {
             filterChain.doFilter(request, response);
         } else {
+            // 若没有登录，则跳转至 toLogin.jsp 待登录页面
             response.sendRedirect(request.getContextPath() + "/toLogin.jsp");
         }
     }

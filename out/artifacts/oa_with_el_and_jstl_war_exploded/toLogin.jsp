@@ -1,10 +1,5 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: 14776
-  Date: 2022/10/4
-  Time: 13:08
-  To change this template use File | Settings | File Templates.
---%>
+<%--去登陆界面，被过滤器过滤掉的请求跳转的页面--%>
+
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>

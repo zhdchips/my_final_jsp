@@ -1,6 +1,7 @@
+<%--登录页面，提供待填写用户和密码的表单--%>
+
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@page session="false" %>
-
 <!DOCTYPE html>
 <html>
 	<head>

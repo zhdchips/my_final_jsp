@@ -43,6 +43,7 @@ public class DeptServlet extends HttpServlet {
         ResultSet rs = null;
         List<Dept> deptList = new ArrayList<>();
 
+        // 在数据库中查找所有的部门信息，并将它们存入 list 中
         try {
             conn = DBUtil.getConnection();
             String sql = "select deptno, dname, loc from dept;";
@@ -65,6 +66,7 @@ public class DeptServlet extends HttpServlet {
             DBUtil.close(conn, ps, rs);
         }
 
+        // 将含有部门信息的 list 转发给 清单页面
         request.setAttribute("deptList", deptList);
         request.getRequestDispatcher("/list.jsp").forward(request, response);
     }
@@ -104,12 +106,14 @@ public class DeptServlet extends HttpServlet {
     }
 
     private void doDel(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        // 取出 请求中的部门编号
+        String deptno = request.getParameter("deptno");
+
+        // 根据部门编号，在数据库中删除相应的部门
         Connection conn = null;
         PreparedStatement ps = null;
-        String deptno = request.getParameter("deptno");
         String sql = "delete from dept where deptno = ?;";
         int rows = 0;
-
         try {
             conn = DBUtil.getConnection();
             conn.setAutoCommit(false);
@@ -131,9 +135,11 @@ public class DeptServlet extends HttpServlet {
         }
 
         if (rows == 1) {
+            // 如果删除成功，跳转至 页面展示
 //            request.getRequestDispatcher("/dept/list").forward(request, response);
             response.sendRedirect(request.getContextPath() + "/dept/list");
         } else {
+            // 如果删除失败，跳转至 false.jsp 操作失败页面
 //            request.getRequestDispatcher("/false.jsp").forward(request, response);
             response.sendRedirect(request.getContextPath() + "/false.jsp");
         }
@@ -142,15 +148,15 @@ public class DeptServlet extends HttpServlet {
     private void doAdd(HttpServletRequest request, HttpServletResponse response) throws IOException {
         request.setCharacterEncoding("UTF-8");
 
+        // 获取请求提交的参数
         String deptno = request.getParameter("deptno");
         String dname = request.getParameter("dname");
         String loc = request.getParameter("loc");
 
+        // 在数据库中添加 新的部门的数据
         Connection conn = null;
         PreparedStatement ps = null;
-
         int rows = 0;
-
         try {
             conn = DBUtil.getConnection();
             String sql = "insert into dept(deptno, dname, loc) values(?,?,?)";
@@ -166,19 +172,23 @@ public class DeptServlet extends HttpServlet {
         }
 
         if (rows == 1) {
+            // 如果添加成功，跳转到 部门展示
 //            request.getRequestDispatcher("/dept/list").forward(request, response);
             response.sendRedirect(request.getContextPath() + "/dept/list");
         } else {
+            // 如果添加失败，false.jsp 跳转到 操作失败页面
 //            request.getRequestDispatcher("/false.jsp").forward(request, response);
             response.sendRedirect(request.getContextPath() + "/false.jsp");
         }
     }
 
     private void doModify(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        // 获取请求中 修改后的部门信息
         String deptno = request.getParameter("deptno");
         String dname = request.getParameter("dname");
         String loc = request.getParameter("loc");
 
+        // 在数据库中，修改部门的信息
         Connection conn = null;
         PreparedStatement ps = null;
         ResultSet rs = null;
@@ -199,9 +209,11 @@ public class DeptServlet extends HttpServlet {
         }
 
         if (rows == 1) {
+            // 如果修改成功，跳转到 部门展示
 //            request.getRequestDispatcher("/dept/list").forward(request, response);
             response.sendRedirect(request.getContextPath() + "/dept/list");
         } else {
+            // 如果修改失败，跳转到 false.jsp 操作失败页面
 //            request.getRequestDispatcher("/false.jsp").forward(request, response);
             response.sendRedirect(request.getContextPath() + "/false.jsp");
         }

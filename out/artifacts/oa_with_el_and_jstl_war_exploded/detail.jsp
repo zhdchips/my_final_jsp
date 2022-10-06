@@ -1,6 +1,6 @@
+<%--部门详情页面，展示具体部门的部门编号、部门名称和部门位置--%>
+
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-
-
 <!DOCTYPE html>
 <html>
 	<head>
